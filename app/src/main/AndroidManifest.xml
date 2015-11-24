@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.romain.myapplication" >
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -16,6 +18,11 @@
             </intent-filter>
         </activity>
         <activity android:name=".Activity2" >
+        </activity>
+        <activity
+            android:name=".Formulaire"
+            android:label="@string/title_activity_formulaire"
+            android:theme="@style/AppTheme.NoActionBar" >
         </activity>
     </application>
 

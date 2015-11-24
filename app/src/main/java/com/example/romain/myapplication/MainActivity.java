@@ -37,9 +37,28 @@ public class MainActivity extends AppCompatActivity {
                 SimpleDateFormat fmt = new SimpleDateFormat("dd-MM-yyyy");
 
 
-                Intent intent = new Intent(getApplicationContext(),Activity2.class);
-                intent.putExtra("date",day + "-" + month + "-" + year);
+                Intent intent = new Intent(getApplicationContext(), Activity2.class);
+                intent.putExtra("date", day + "-" + month + "-" + year);
                 startActivity(intent);
+            }
+        });
+
+        Button toastButton;
+        toastButton = (Button) findViewById(R.id.buttonSimple);
+
+
+        toastButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                DatePicker date = (DatePicker) findViewById(R.id.datePicker);
+                int year = date.getYear();
+                int month = date.getMonth();
+                int day = date.getDayOfMonth();
+
+                Calendar cal = GregorianCalendar.getInstance();
+                cal.set(year, month, day);
+
+                Toast.makeText(getApplicationContext(),day + "-" + month + "-" + year, Toast.LENGTH_SHORT).show();
             }
         });
     }
