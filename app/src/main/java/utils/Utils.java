@@ -22,19 +22,15 @@ import java.util.Date;
  * Created by romain on 24/11/2015.
  */
 public class Utils {
-
-
     private static class GetProgramTask extends AsyncTask<String,Integer,String> {
 
         private Context context;
-
         public GetProgramTask(Context context) {
             this.context = context;
         }
         @Override
         protected String doInBackground(String... params) {
             return getDocument(params[0]);
-
         }
 
         @Override
@@ -45,9 +41,8 @@ public class Utils {
             intent.putExtra("data", result);
             context.startActivity(intent);
         }
-
-
     }
+
     public static void get(Context context, String serviceUrl)
     {
         new GetProgramTask(context).execute(serviceUrl);
@@ -86,15 +81,12 @@ public class Utils {
     private static String getResponseText(InputStream is) {
         BufferedReader br = null;
         StringBuilder sb = new StringBuilder();
-
         String line;
         try {
-
             br = new BufferedReader(new InputStreamReader(is));
             while ((line = br.readLine()) != null) {
                 sb.append(line);
             }
-
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
@@ -108,7 +100,5 @@ public class Utils {
         }
 
         return sb.toString();
-
     }
-
 }
