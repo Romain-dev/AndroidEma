@@ -2,8 +2,11 @@ package utils;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.media.tv.TvContract;
 import android.os.AsyncTask;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.romain.myapplication.Activity2;
@@ -15,6 +18,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Date;
 
@@ -22,6 +26,42 @@ import java.util.Date;
  * Created by romain on 24/11/2015.
  */
 public class Utils {
+    //new LoadImageFromUrl().execute(yourImageViewWithUrlInsideTheTag);
+    public static class LoadImageFromUrl extends AsyncTask<Object, Void, Bitmap> {
+        private ImageView imv;
+        private String path;
+
+        @Override
+        protected Bitmap doInBackground(Object... params) {
+            imv = (ImageView) params[0];
+            path = (String) params[1];
+
+            try {
+                URL url = new URL(path);
+                HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+                connection.setDoInput(true);
+                connection.connect();
+                InputStream input = connection.getInputStream();
+                Bitmap bitmap = BitmapFactory.decodeStream(input);
+                return bitmap;
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+                return null;
+            } catch (IOException e) {
+                e.printStackTrace();
+                return null;
+            }
+        }
+
+        @Override
+        protected void onPostExecute(Bitmap result) {
+            if (result != null && imv != null) {
+                imv.setImageBitmap(result);
+            }
+        }
+    }
+
+
     private static class GetProgramTask extends AsyncTask<String,Integer,String> {
 
         private Context context;
