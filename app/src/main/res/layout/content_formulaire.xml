@@ -64,8 +64,8 @@
     <TableRow
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="35dp"
-        android:layout_below="@+id/dateDebut"
+        android:layout_marginTop="15dp"
+        android:layout_below="@+id/viewDebut"
         android:layout_centerHorizontal="true">
 
         <ListView
@@ -73,4 +73,19 @@
             android:layout_height="326dp"
             android:id="@+id/listView" />
     </TableRow>
+
+    <utils.TimeView
+        android:layout_below="@id/dateDebut"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:id="@+id/viewDebut"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <utils.TimeView
+        android:layout_below="@id/dateFin"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:id="@+id/viewFin"
+        android:layout_alignParentRight ="true" />
 </RelativeLayout>

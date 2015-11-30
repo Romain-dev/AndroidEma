@@ -5,6 +5,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.widget.ListView;
 import android.widget.TextView;
 import utils.DataListAdapter;
+import utils.TimeView;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -48,7 +50,12 @@ public class Formulaire extends AppCompatActivity {
                 photos[i] = element.getString("image");
             }
 
-            listeActors.setAdapter(new DataListAdapter(getLayoutInflater(),firstNames,lastNames,photos));
+            listeActors.setAdapter(new DataListAdapter(getLayoutInflater(), firstNames, lastNames, photos));
+            TimeView timeViewDebut = (TimeView)findViewById(R.id.viewDebut);
+            timeViewDebut.setTime(json.getString("date_start"));
+
+            TimeView timeViewEnd = (TimeView)findViewById(R.id.viewFin);
+            timeViewEnd.setTime(json.getString("date_end"));
         }
         catch (JSONException e)
         {
