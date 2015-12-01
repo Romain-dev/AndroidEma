@@ -10,7 +10,15 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme" >
-        <activity android:name=".MainActivity" >
+
+        <receiver
+        android:name=".MyReveiver">
+            <intent-filter android:priority="100">
+                <action android:name="android.intent.action.USER_PRESENT" />
+            </intent-filter>
+        </receiver>
+
+    <activity android:name=".MainActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -24,6 +32,14 @@
             android:label="@string/title_activity_formulaire"
             android:theme="@style/AppTheme.NoActionBar" >
         </activity>
+        <activity android:name=".Compass" >
+        </activity>
+
+        <service
+            android:name=".CustomService"
+            android:enabled="true"
+            android:exported="true" >
+        </service>
     </application>
 
 </manifest>

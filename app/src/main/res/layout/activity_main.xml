@@ -18,7 +18,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Toast"
+        android:text="Compass"
         android:id="@+id/buttonSimple"
         android:layout_marginTop="120dp"
         android:layout_marginLeft="40dp"

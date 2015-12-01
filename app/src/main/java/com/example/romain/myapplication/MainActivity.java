@@ -54,15 +54,8 @@ public class MainActivity extends AppCompatActivity {
         toastButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                DatePicker date = (DatePicker) findViewById(R.id.datePicker);
-                int year = date.getYear();
-                int month = date.getMonth();
-                int day = date.getDayOfMonth();
-
-                Calendar cal = GregorianCalendar.getInstance();
-                cal.set(year, month, day);
-
-                Toast.makeText(getApplicationContext(),day + "-" + month + "-" + year, Toast.LENGTH_SHORT).show();
+                Intent newIntent = new Intent(getApplicationContext(),Compass.class);
+                startActivity(newIntent);
             }
         });
     }
